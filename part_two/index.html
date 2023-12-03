@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Part_two</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('form').submit(function(event) {
+                event.preventDefault();
+                var title = $('input[name=title]').val();
+                var rating = $('input[name=rating]').val();
+                var listItem = $('<li>').text('Title: ' + title + ', Rating: ' + rating);
+                var removeButton = $('<button>')
+                    .text('Remove')
+                    .attr('type', 'button')
+                    .on('click', () => {
+                        listItem.remove()
+                    });
+                listItem.append(removeButton);
+                $('#list').append(listItem);
+            });
+        }); 
+    </script>
+</head>
+<body>
+    <form>
+        <label for='title'>Title:</label>
+        <input type='text' id='title' name='title'><br><br>
+        <label for='rating'>Rating:</label>
+        <input type='number' id='rating' name='rating'><br><br>
+        <button type='submit'>Submit</button>
+        <div id="list">
+
+        </div>
+    </form>
+</body>
+</html>
